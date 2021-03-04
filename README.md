@@ -7,3 +7,5 @@ This code is just for my own learning purpose.
    Material de la asignatura 'Fundamentos de la informática' cursada en la UAB en el año 2015.
 3. Curso de Introducción a C (Platzi), [link](https://platzi.com/clases/lenguaje-c/)
    February 2021. 
+4. Curso de Control de Flujo en C (Platzi), [link](https://platzi.com/clases/flujo-c/)
+   February 2021.

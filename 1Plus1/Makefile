@@ -1,9 +1,3 @@
-# targets: prerequisites
-#    command 1
-#    command ...
-#    command N
-#hello:
-#	echo "Starting compilation process"
 IDIR =./include
 CC=gcc
 CFLAGS=-I $(IDIR)

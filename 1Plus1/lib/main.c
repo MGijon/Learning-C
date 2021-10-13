@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include <functions.h>
 #include <stdlib.h>
 #include <string.h>
+#include <functions.h>
 
 int main()
 {
@@ -9,8 +9,8 @@ int main()
     const int DIMENSION = 2;
     const int NUMBER_EXPERIMENTS = 10;
     const double KNOW_MINIMUM = 0.0;
-    const double TOLERANCE = 0.0000001;
-    const double SIGMA = .0000003;
+    const double TOLERANCE = 0.00001;
+    const double SIGMA = .000003;
     
     int number_iterations_all[NUMBER_EXPERIMENTS];
 
@@ -40,40 +40,20 @@ int main()
                 x[1] = y[1];
                 current_value = new_value;
             }
-            
-
-            // print and update the iteration
-            //if (iteration % 5 == 0)
-            //{
-            //    printf("\t\tIteration %d - Current value %f - (%f, %f)\n", iteration, current_value, x[0], x[1]);
-            //}
             iteration++;
         }
+        number_iterations_all[experiment] = iteration;
 
         printf("  - Final point: (%f, %f)\n", x[0], x[1]);
         printf("  - Final finetess value: %f\n", current_value);
         printf("  - Total number of iterations needed: %d\n", iteration);
         printf("Ended experiment %u\n\n", experiment + 1);
     }
-    
-
-    /*
-    double graella[NUMBER_POINTS][DIMENSION];
-    initGraella((double *) graella, NUMBER_POINTS, DIMENSION);
-    double start, step;
-    start = 0.0;
-    step = 0.01;
-    for (int point = 0; point < NUMBER_POINTS; point++){
-        graella[point][0] = start;
-        graella[point][1] = start;
-        start = start + step;
-        //printf("\n%f - %f\n", graella[point][0], graella[point][1]);
-        
-        double p[2] = {graella[point][0], graella[point][1]};
-        //printf("Shpere value: %f\n", sphereFunction(p));
-        //printf("Ackley value: %f\n", ackleyFunction(p));
-    }
-
-    */
+    //for (int i = 0; i < NUMBER_EXPERIMENTS; i++)
+    //{
+    //    printf("%d\n", number_iterations_all[i]);
+    //}
+    printf("MEAN iterations: %f\n", computeMean(number_iterations_all, NUMBER_EXPERIMENTS));
+    printf("STD  iterations: %f\n", computeStd(number_iterations_all, NUMBER_EXPERIMENTS));
     return 0;
 }

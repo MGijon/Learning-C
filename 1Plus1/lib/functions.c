@@ -7,22 +7,6 @@
 #define MPI 3.14159265358979323846
 #endif
 
-void generateRandomNumbers(void){
-  /* Just generate random numbers to practice */
-  printf("Generating Radom numbers just for fun\n");
-  time_t t;
-  int N = 10;
-  int randomNumbers[N];
-
-  srand((unsigned) time(&t));
-  for (int i = 0; i<N; i++){ randomNumbers[i] = rand() % 100; }
-  for (int i = 0; i<N; i++){ 
-    if (i != N - 1){ printf("%d - ", randomNumbers[i]);}
-    else { printf("%d", randomNumbers[i]); }
-  }
-  return;
-}
-
 void printCurrentTime(void){
   /*
    * Function: printCurrentTime
@@ -42,25 +26,6 @@ void printCurrentTime(void){
 
   return;
 }
-
-void initGraella(double *graella, int NUMBER_POINTS, int DIMENSION)
-{
-        
-    double element = 0.0;
-    double step = 0.01;
-    
-    for (int i = 0; i < NUMBER_POINTS; i++)
-    {
-        for (int j = 0; j < DIMENSION; j++)
-        {   
-            *( (graella + DIMENSION * i) + j) = element + j * step;
-        }
-        element += step;
-    }
-   
-    return;
-} 
-
 
 double sphereFunction(double point[2])
 {   
@@ -136,3 +101,44 @@ double generateRandomNormal(void)
     return cos(2 * MPI * v2) * sqrt( -2.0 * log(v1));
 }
 
+double computeMean(int* elements, int number_elements)
+{   
+    /*
+     * Function: computeMean
+     * ---------------------
+     * Computes the aricmetic mean of the given poits
+     *
+     * elements: 1-dimensional array of integers
+     * number_elements: number of values contained in elements
+     *
+     * returns: aricmetic mean of the given collection of integers
+     */
+    int sum;
+    for (int i = 0; i < number_elements; i++)
+    {
+        sum += elements[i];
+    }
+    return (double) sum / number_elements;
+}
+
+double computeStd(int* elements, int number_elements)
+{
+    /*
+     * Function: computeStd
+     * --------------------
+     * Computes the standard deviation of the given poits
+     *
+     * elements: 1-dimensional array of integers
+     * number_elements: number of values contained in elements
+     *
+     * returns: standard deviation of the given collection of integers
+     */
+     double sum;
+     double mean = computeMean(elements, number_elements);
+     for (int i = 0; i < number_elements; i++)
+     {
+        sum += pow( (elements[i] - mean), 2 );
+     }
+     double computation = sqrt( sum / (number_elements - 1));
+     return computation;
+}

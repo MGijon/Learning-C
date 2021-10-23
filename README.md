@@ -9,3 +9,5 @@ This code is just for my own learning purpose.
    February 2021. 
 4. Curso de Control de Flujo en C (Platzi), [link](https://platzi.com/clases/flujo-c/)
    February 2021.
+5. 1Plus1: implementation of the 1 plus 1 algorithm for solving a minimization problem (evolutive strategy).
+
